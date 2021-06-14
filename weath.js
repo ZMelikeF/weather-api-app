@@ -5,28 +5,32 @@ var inputs=document.querySelector(".city")
 var temperat=document.querySelector(".temperature")
 var descrips=document.querySelector(".description")
 var icon=document.querySelector(".icons")
+
 var icon2=document.querySelector(".icon2")
 var tomweather2=document.querySelector(".temperature2")
 var tomdesc2=document.querySelector(".description2")
+
 var icon3=document.querySelector(".icon3")
 var tomweather3=document.querySelector(".temperature3")
 var tomdesc3=document.querySelector(".description3")
+var date2=document.querySelector(".day3")
+
 var icon4=document.querySelector(".icon4")
 var tomweather4=document.querySelector(".temperature4")
 var tomdesc4=document.querySelector(".description4")
-var date2=document.querySelector(".day3")
 var date3=document.querySelector(".day4")
-
 //const key="f904640bab0ef7b2334cb44efa056b72";
 
 
 var elem = document.getElementById('button');
 
 elem.addEventListener("click",function(){
-    fetch("http://api.openweathermap.org/data/2.5/forecast?q="+search.value+"&units=metric&appid=f904640bab0ef7b2334cb44efa056b72")
+   
+    fetch("http://api.openweathermap.org/data/2.5/forecast?q="+search.value+"&units=metric&appid=f904640bab0ef7b2334cb44efa056b72")  
     //fetch("http://api.openweathermap.org/data/2.5/weather?q="+search.value+"&units=metric&appid=f904640bab0ef7b2334cb44efa056b72")
     .then(response=>response.json())
     .then(data => {
+       
         console.log(data);
 
         var cityname =data["city"]["name"];
@@ -65,7 +69,6 @@ elem.addEventListener("click",function(){
         tomdesc3.innerHTML=descriptionval3;
         date2.innerHTML=day3;
 
-
         var iconcode4 =data["list"][18]["weather"][0]["icon"];
         var iconurl4 ="http://openweathermap.org/img/w/"+iconcode4+".png";
         var newtemperatureval4=data["list"][18]["main"]["temp"];
@@ -78,7 +81,6 @@ elem.addEventListener("click",function(){
         tomweather4.innerHTML=newtemperatureval4+"ºC";
         tomdesc4.innerHTML=descriptionval4;
         date3.innerHTML=day4;
-})          
-//.catch(err => alert("Some error is occured"))
-    
+})         
+.catch(err => alert("Some error is occured"))
 })
